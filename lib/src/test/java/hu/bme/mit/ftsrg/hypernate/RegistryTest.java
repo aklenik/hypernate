@@ -8,6 +8,7 @@ import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 import hu.bme.mit.ftsrg.hypernate.annotations.AttributeInfo;
+import hu.bme.mit.ftsrg.hypernate.annotations.EntityType;
 import hu.bme.mit.ftsrg.hypernate.annotations.PrimaryKey;
 import hu.bme.mit.ftsrg.hypernate.registry.EntityExistsException;
 import hu.bme.mit.ftsrg.hypernate.registry.EntityNotFoundException;
@@ -88,6 +89,11 @@ class RegistryTest {
     @AttributeInfo(name = TestEntity.Fields.bar)
   })
   private record TestEntity(String foo, Integer bar) {}
+
+  @FieldNameConstants
+  @EntityType("Asset")
+  @PrimaryKey(@AttributeInfo(name = AnnotatedEntity.Fields.id))
+  private record AnnotatedEntity(String id) {}
 
   @Nested
   class when_must_create {
@@ -366,6 +372,25 @@ class RegistryTest {
       assertThrows(
           EntityNotFoundException.class,
           () -> registry.mustRead(TestEntity.class, entity.foo, entity.bar));
+      verifyNoMoreInteractions(stub);
+    }
+
+    @Test
+    void given_annotated_entity_type_then_use_annotation_value_for_composite_key() {
+      // Mock the stub to return a CompositeKey when asked, and represent an empty ledger
+      given(stub.createCompositeKey(anyString(), any(String[].class)))
+          .willReturn(new CompositeKey("Asset", "id-1"));
+      given(stub.getState(anyString())).willReturn(new byte[] {});
+
+      // This mustRead call is expected to fail with EntityNotFoundException because the ledger
+      // is empty. We are only executing mustRead here to force the call to key generation
+      // (which calls createCompositeKey internally) so that we can verify the key type name.
+      assertThrows(
+          EntityNotFoundException.class, () -> registry.mustRead(AnnotatedEntity.class, "id-1"));
+
+      // Verify that the annotated entity type ("Asset") was indeed used for creating the composite
+      // key
+      then(stub).should().createCompositeKey(eq("Asset"), any(String[].class));
       verifyNoMoreInteractions(stub);
     }
 
