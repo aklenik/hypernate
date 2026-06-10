@@ -1068,6 +1068,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#design-approval-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design-Approval Check
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#review" class="md-nav__link">
     <span class="md-ellipsis">
       Review
@@ -1317,6 +1326,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#design-approval-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design-Approval Check
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#review" class="md-nav__link">
     <span class="md-ellipsis">
       Review
@@ -1393,7 +1411,8 @@ git push --force-with-lease
 <ol>
 <li>Push your branch to your fork.</li>
 <li>Open a PR against <code>main</code>. The PR template includes a checklist — please fill it in.</li>
-<li><strong>Link the issue</strong> your PR addresses (for example, <code>Closes #123</code>).</li>
+<li><strong>Link the approved issue</strong> with a closing keyword — for example <code>Closes #123</code>. This is
+   required and verified automatically (see <a href="#design-approval-check">Design-Approval Check</a>).</li>
 <li>Describe what changed and why, and call out anything reviewers should focus on.</li>
 </ol>
 <h2 id="continuous-integration">Continuous Integration</h2>
@@ -1405,6 +1424,23 @@ git push --force-with-lease
 </ol>
 <p>All checks must pass before a PR can be merged. See the <a href="../../guides/cicd/">CI/CD guide</a> for how to
 read results and troubleshoot failures. Documentation-only changes skip this workflow.</p>
+<h2 id="design-approval-check">Design-Approval Check</h2>
+<p>A separate <strong>Design Approval</strong> check also runs on every pull request. It verifies that the PR links
+an issue labeled <code>design/approved</code> using a <strong>closing keyword</strong> in the description — for example
+<code>Closes #123</code> (a bare mention like <code>#123</code> does not count).</p>
+<p>If no linked <code>design/approved</code> issue is found, the check:</p>
+<ul>
+<li>applies the <code>needs-approved-issue</code> label,</li>
+<li>posts a comment explaining how to fix it, and</li>
+<li>fails, blocking the merge.</li>
+</ul>
+<p>To clear it, link an approved issue with a closing keyword (or get the linked issue approved by the
+maintainers), then <strong>push a commit or edit the PR description</strong> to re-run the check — approving the
+issue alone does not re-trigger it. Once it passes, the <code>needs-approved-issue</code> label is removed
+automatically.</p>
+<p>Pull requests left with <code>needs-approved-issue</code> are marked <code>stale</code> after 14 days of inactivity and
+closed 60 days later (PRs labeled <code>pinned</code> or <code>security</code> are exempt). See the
+<a href="../../guides/cicd/">CI/CD guide</a> for the underlying workflows.</p>
 <h2 id="review">Review</h2>
 <p>A maintainer will review your PR. Be ready to:</p>
 <ul>

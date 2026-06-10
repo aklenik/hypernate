@@ -1340,7 +1340,17 @@ choose the feature request template. Please describe:</p>
 <li><strong>Alternatives</strong> you have considered.</li>
 </ul>
 <h2 id="issue-triage-and-the-design-workflow">Issue Triage and the Design Workflow</h2>
-<p>Maintainers use labels to manage the lifecycle of an issue:</p>
+<p>Most of this lifecycle is enforced automatically:</p>
+<ol>
+<li><strong>An issue is opened.</strong> It is automatically labeled <code>needs-triage</code>.</li>
+<li><strong>Maintainers triage and discuss the design.</strong> While a design is being worked out, the issue
+   carries <code>design/pending</code>.</li>
+<li><strong>The design is approved.</strong> A maintainer applies <code>design/approved</code>, and work can begin.</li>
+<li><strong>A pull request links the approved issue</strong> with a closing keyword (for example <code>Closes #123</code>).
+   An automated check confirms the link before the PR can merge — see
+   <a href="../pull-requests/#design-approval-check">the design-approval check</a>.</li>
+</ol>
+<p>The labels used in this process:</p>
 <table>
 <thead>
 <tr>
@@ -1351,7 +1361,7 @@ choose the feature request template. Please describe:</p>
 <tbody>
 <tr>
 <td><code>needs-triage</code></td>
-<td>The issue is awaiting review by the maintainers.</td>
+<td>Added automatically to every new issue; awaiting maintainer review.</td>
 </tr>
 <tr>
 <td><code>design/pending</code></td>
@@ -1361,14 +1371,23 @@ choose the feature request template. Please describe:</p>
 <td><code>design/approved</code></td>
 <td>The design is approved; contributions are welcome.</td>
 </tr>
+<tr>
+<td><code>needs-approved-issue</code></td>
+<td>Added automatically to a pull request not linked to a <code>design/approved</code> issue.</td>
+</tr>
+<tr>
+<td><code>stale</code></td>
+<td>Added automatically to a flagged pull request after a period of inactivity.</td>
+</tr>
 </tbody>
 </table>
 <p><strong>Every contribution must be linked to an issue labeled <code>design/approved</code> before work begins —
 including trivial fixes.</strong> There is no exception for small changes: every change still counts
 toward the project's health metrics (such as its error rate), so all changes go through the same
-design-approval step. This is enforced by an automated check on every pull request — a PR that is
-not associated with a <code>design/approved</code> issue will fail. See
-<a href="../pull-requests/">Submitting Pull Requests</a> for how this ties into the review process.</p>
+design-approval step. This is enforced by an automated check on every pull request — a PR not
+linked to a <code>design/approved</code> issue is flagged and cannot merge. See
+<a href="../pull-requests/#design-approval-check">the design-approval check</a> for what that looks like and
+how to resolve it.</p>
 <h2 id="reporting-a-security-vulnerability">Reporting a Security Vulnerability</h2>
 <blockquote>
 <p><strong>Do not report security vulnerabilities in public issues.</strong> A private reporting process is
