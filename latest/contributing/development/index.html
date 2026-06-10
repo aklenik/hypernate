@@ -8,11 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lf-decentralized-trust-labs.github.io/hypernate/latest/references/citing/">
+        <link rel="canonical" href="https://lf-decentralized-trust-labs.github.io/hypernate/latest/contributing/development/">
       
       
-        <link rel="prev" href="../../contributing/maintainers/">
+        <link rel="prev" href="../issues/">
       
+      
+        <link rel="next" href="../pull-requests/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +22,7 @@
     
     
       
-        <title>Citing - Hypernate</title>
+        <title>Working with the Code - Hypernate</title>
       
     
     
@@ -70,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#citing" class="md-skip">
+        <a href="#working-with-the-code" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Citing
+              Working with the Code
             
           </span>
         </div>
@@ -295,11 +297,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../contributing/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -315,13 +319,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../references/citing/" class="md-tabs__link">
           
   
   
@@ -842,28 +844,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
             
   
   
@@ -876,7 +881,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Contributing
@@ -890,7 +895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contributing/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -913,7 +918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contributing/issues/" class="md-nav__link">
+      <a href="../issues/" class="md-nav__link">
         
   
   
@@ -933,10 +938,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../contributing/development/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Working with the Code
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -947,6 +974,95 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-the-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting the Source
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-and-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building and Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building and Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Reports
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Style
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Layout
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-work-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      What to Work On
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -959,7 +1075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contributing/pull-requests/" class="md-nav__link">
+      <a href="../pull-requests/" class="md-nav__link">
         
   
   
@@ -982,7 +1098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contributing/ai-agents/" class="md-nav__link">
+      <a href="../ai-agents/" class="md-nav__link">
         
   
   
@@ -1005,7 +1121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contributing/documentation/" class="md-nav__link">
+      <a href="../documentation/" class="md-nav__link">
         
   
   
@@ -1028,7 +1144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contributing/maintainers/" class="md-nav__link">
+      <a href="../maintainers/" class="md-nav__link">
         
   
   
@@ -1055,31 +1171,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
@@ -1092,7 +1205,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             References
@@ -1103,32 +1216,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Citing
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../references/citing/" class="md-nav__link">
         
   
   
@@ -1139,44 +1230,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#text-citation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Text Citation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bibtex" class="md-nav__link">
-    <span class="md-ellipsis">
-      BibTeX
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1216,18 +1269,69 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#text-citation" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Text Citation
+      Prerequisites
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bibtex" class="md-nav__link">
+  <a href="#getting-the-source" class="md-nav__link">
     <span class="md-ellipsis">
-      BibTeX
+      Getting the Source
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-and-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building and Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building and Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Reports
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Style
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Layout
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-work-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      What to Work On
     </span>
   </a>
   
@@ -1252,26 +1356,123 @@
   
 
 
-<h1 id="citing">Citing</h1>
-<p>Please use the following information when you use or reference this project (or the related
-research paper) in your own work.</p>
-<p>Paper link:
-https://doi.org/10.21203/rs.3.rs-4606405/v1</p>
-<h2 id="text-citation">Text Citation</h2>
-<p>Damaris Jepkurui Kangogo, Bertalan Zoltán Péter, Attila Klenik, Imre Kocsis.
-<em>Practical runtime verification of cross-organizational smart contracts</em>, 11 July 2024,
-PREPRINT (Version 1) available at Research Square
-[https://doi.org/10.21203/rs.3.rs-4606405/v1]</p>
-<h2 id="bibtex">BibTeX</h2>
-<pre><code class="language-bibtex">@unpublished{kangogo2024practical,
-  title={Practical runtime verification of cross-organizational smart contracts},
-  author={Kangogo, Damaris Jepkurui and Péter, Bertalan Zoltán and Klenik, Attila
-    and Kocsis, Imre},
-  year={2024},
-  note={Preprint at \url{https://www.researchsquare.com/article/rs-4606405/latest}},
-  doi={10.21203/rs.3.rs-4606405/v1}
-}
+<h1 id="working-with-the-code">Working with the Code</h1>
+<p>This page covers everything you need to build, test, and format Hypernate locally.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li><strong>JDK 17</strong> — Hypernate targets Java 17 (the build declares a Java 17 toolchain). CI uses the
+  <a href="https://adoptium.net/">Temurin</a> distribution.</li>
+<li><strong>Git</strong> — for cloning and contributing.</li>
+<li>No separate Gradle installation is required; the project ships with the Gradle wrapper
+  (<code>./gradlew</code>).</li>
+</ul>
+<p>The library uses <a href="https://projectlombok.org/">Lombok</a> and AspectJ post-compile weaving. If you use
+an IDE, enable annotation processing and install Lombok support so the code resolves correctly:</p>
+<ul>
+<li><strong>IntelliJ IDEA</strong> — install the <em>Lombok</em> plugin and enable <em>Annotation Processing</em>.</li>
+<li><strong>Eclipse</strong> — run the Lombok installer against your IDE.</li>
+</ul>
+<h2 id="getting-the-source">Getting the Source</h2>
+<pre><code class="language-bash">git clone https://github.com/LF-Decentralized-Trust-labs/hypernate.git
+cd hypernate
 </code></pre>
+<p>If you plan to open a pull request,
+<a href="https://github.com/LF-Decentralized-Trust-labs/hypernate/fork">fork</a> the repository first and
+clone your fork.</p>
+<h2 id="building-and-testing">Building and Testing</h2>
+<p>The project is a single Gradle module (<code>lib</code>). The most common tasks are:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>./gradlew build</code></td>
+<td>Full build: formatting check, compilation, and tests (everything CI runs).</td>
+</tr>
+<tr>
+<td><code>./gradlew assemble</code></td>
+<td>Compile and package without running tests.</td>
+</tr>
+<tr>
+<td><code>./gradlew test</code></td>
+<td>Run the JUnit 5 test suite.</td>
+</tr>
+<tr>
+<td><code>./gradlew spotlessApply</code></td>
+<td>Auto-format the code (see <a href="#code-style">Code Style</a>).</td>
+</tr>
+<tr>
+<td><code>./gradlew spotlessCheck</code></td>
+<td>Verify formatting without changing files.</td>
+</tr>
+</tbody>
+</table>
+<p>Running <code>./gradlew build</code> before you push is the best way to catch problems early — it mirrors the
+<a href="../../guides/cicd/">CI pipeline</a>.</p>
+<h3 id="test-reports">Test Reports</h3>
+<p>After running tests, an HTML report is written to <code>lib/build/reports/tests/test/index.html</code>. Open
+it in a browser to inspect failures with full stack traces.</p>
+<h2 id="code-style">Code Style</h2>
+<p>Formatting is enforced by <a href="https://github.com/diffplug/spotless">Spotless</a> using
+<a href="https://github.com/google/google-java-format">Google Java Format</a>. CI fails if code is not
+formatted, so always run:</p>
+<pre><code class="language-bash">./gradlew spotlessApply
+</code></pre>
+<p>Spotless also orders imports, removes unused imports, and inserts the required SPDX license header
+on every source file:</p>
+<pre><code class="language-java">/* SPDX-License-Identifier: Apache-2.0 */
+</code></pre>
+<p>You do not need to add the header by hand — <code>spotlessApply</code> inserts it for you.</p>
+<h2 id="project-layout">Project Layout</h2>
+<p>The source lives under <code>lib/src/main/java/hu/bme/mit/ftsrg/hypernate/</code>, organized by package:</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>annotations</code></td>
+<td>Declarative entity-key and query-index annotations (<code>@PrimaryKey</code>, <code>@AttributeInfo</code>, …).</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td>The Hypernate context carrying per-transaction state.</td>
+</tr>
+<tr>
+<td><code>contract</code></td>
+<td>Integration with the Fabric contract / chaincode entry points.</td>
+</tr>
+<tr>
+<td><code>mappers</code></td>
+<td>Attribute-to-key mappers (zero-padding, ordering, and serialization helpers).</td>
+</tr>
+<tr>
+<td><code>middleware</code></td>
+<td>The stub middleware chain (logging, caching, throttling) and its notifications.</td>
+</tr>
+<tr>
+<td><code>registry</code></td>
+<td>The entity registry — CRUD operations and the related exceptions.</td>
+</tr>
+<tr>
+<td><code>util</code></td>
+<td>Internal utilities such as JSON serialization.</td>
+</tr>
+</tbody>
+</table>
+<p>Tests mirror this structure under <code>lib/src/test/java/</code>.</p>
+<h2 id="what-to-work-on">What to Work On</h2>
+<p>Looking for a place to start? Browse the
+<a href="https://github.com/LF-Decentralized-Trust-labs/hypernate/issues">open issues</a>, especially those
+labeled <code>design/approved</code>. Every change — even a trivial one — needs an approved issue before you
+begin work; see <a href="../issues/#issue-triage-and-the-design-workflow">Issue Triage and the Design Workflow</a>.</p>
 
 
 
