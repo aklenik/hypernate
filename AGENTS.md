@@ -41,6 +41,10 @@ with Gradle. Library source lives in the single `lib` module.
 
 - Docs are Markdown under `docs/` (MkDocs Material). Preview with `mkdocs serve`; validate with
   `mkdocs build --strict` (the site uses strict mode, so broken links fail the build).
+- Indent nested list items by 2 spaces per level, as on GitHub — never 4: the docs site overrides
+  Python-Markdown with `mdx_truly_sane_lists` (see `mkdocs.yml`), under which deeper indents
+  collapse into run-on text. Enforced by `npx markdownlint-cli2` (config in
+  `.markdownlint-cli2.jsonc`); run it before committing Markdown changes.
 
 ## Before opening a pull request
 

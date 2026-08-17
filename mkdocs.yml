@@ -19,6 +19,16 @@ theme:
     - search.share
     - toc.follow
 
+# Python-Markdown requires 4-space nested-list indentation by default and
+# silently flattens the 2-space form that CommonMark/GFM accept. Override it
+# so lists render the same here as on GitHub. truly_sane stays off to keep
+# every other rendering behavior identical to vanilla Python-Markdown.
+# See docs/contributing/documentation.md#markdown-conventions
+markdown_extensions:
+  - mdx_truly_sane_lists:
+      truly_sane: false
+      nested_indent: 2
+
 plugins:
   - search
   - mike:

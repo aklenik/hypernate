@@ -4,8 +4,10 @@ on:
   push:
     branches: ['**']
     paths:
+      - '**.md'
       - 'docs/**'
       - 'mkdocs.yml'
+      - '.markdownlint-cli2.jsonc'
       - '.github/workflows/docs-build.yml'
       - '.github/actions/setup-docs/**'
   # No path filter for pull requests: a required status check that is filtered
@@ -48,6 +50,9 @@ jobs:
       - name: Set up docs environment
         if: steps.changes.outputs.docs == 'true'
         uses: ./.github/actions/setup-docs
+
+      - name: Lint Markdown
+        run: npx --yes markdownlint-cli2@0.23.2
 
       - name: Build documentation
         if: steps.changes.outputs.docs == 'true'

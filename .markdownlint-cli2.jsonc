@@ -1,0 +1,21 @@
+// Configuration for markdownlint-cli2 (also read by the VS Code markdownlint
+// extension). Lint locally with: npx markdownlint-cli2
+{
+  "globs": ["**/*.md"],
+  "ignores": [".venv/**", "site/**", "node_modules/**"],
+  "config": {
+    // Only the rules that guard how Python-Markdown renders the documentation
+    // site are enabled for now; adopting a fuller style ruleset is tracked in
+    // https://github.com/LF-Decentralized-Trust-labs/hypernate/issues/133
+    "default": false,
+
+    // Nested list items must be indented consistently within a list
+    "MD005": true,
+
+    // Unordered lists nest by 2 spaces per level (the markdownlint default),
+    // matching CommonMark/GFM. The docs site renders this correctly via the
+    // mdx_truly_sane_lists override in mkdocs.yml; deeper indents would
+    // collapse into run-on text there. See docs/contributing/documentation.md
+    "MD007": true
+  }
+}

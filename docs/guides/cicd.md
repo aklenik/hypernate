@@ -7,7 +7,7 @@ This project uses GitHub Actions for continuous integration and delivery.
 | Workflow         | File                                         | Purpose                                                   |
 | ---------------- | -------------------------------------------- | --------------------------------------------------------- |
 | Build & Test     | `.github/workflows/build.yml`                | Formatting checks, compilation, and tests                 |
-| Build Documentation | `.github/workflows/docs-build.yml`        | Validates the documentation site (`mkdocs build --strict`) |
+| Build Documentation | `.github/workflows/docs-build.yml`        | Lints Markdown and validates the documentation site       |
 | Deploy Documentation | `.github/workflows/docs-deploy.yml`      | Publishes the documentation site via mike                 |
 | Triage Label     | `.github/workflows/triage_label.yml`         | Labels newly opened issues with `needs-triage`            |
 | Design Approval  | `.github/workflows/check_design_approval.yml`| Flags PRs without a linked design/approved issue          |
@@ -25,9 +25,12 @@ automatically canceled.
 
 ## Build Documentation
 
-The Build Documentation workflow runs `mkdocs build --strict` — the same command contributors run
-locally — so a broken internal link or a page missing from `nav` fails the check instead of
-breaking the deployment after merge.
+The Build Documentation workflow runs two checks, both identical to what contributors run locally:
+
+1. `npx markdownlint-cli2` — Markdown conventions, most importantly 2-space list nesting
+   (see the [documentation guide](../contributing/documentation.md#markdown-conventions)).
+2. `mkdocs build --strict` — a broken internal link or a page missing from `nav` fails the check
+   instead of breaking the deployment after merge.
 
 It runs on every pull request, regardless of which files changed. This is deliberate: a required
 status check that is skipped by a path filter never reports its result, which would block the PR
