@@ -43,10 +43,14 @@ internal link or a page missing from the navigation will fail the build.
 - **Link between pages:** link to the Markdown *file*, not the built URL — for example
   `[Reporting Issues](issues.md)`. MkDocs resolves and validates these links.
 
-## How the Site Is Published
+## How the Site Is Validated and Published
+
+Every pull request runs the **Build Documentation** workflow
+(`.github/workflows/docs-build.yml`), which executes the same `mkdocs build --strict` you run
+locally — a broken link or a page missing from `nav` fails the check before the change can merge.
 
 You do not deploy the site manually. The **Deploy Documentation** workflow
-(`.github/workflows/docs.yml`) handles it:
+(`.github/workflows/docs-deploy.yml`) handles it:
 
 - On every push to `main`, the site is published as the `latest` version.
 - On a `v*.*.*` tag, that release is published as a versioned snapshot.

@@ -7,6 +7,13 @@ on:
     tags:
       - "v*.*.*"
 
+# Serialize deployments: concurrent `mike deploy --push` runs race on the
+# gh-pages ref. Do not cancel an in-progress run — interrupting a half-finished
+# gh-pages push is worse than queueing behind it.
+concurrency:
+  group: docs-deploy
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -18,11 +25,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Install dependencies
-        run: pip install -r docs/requirements.txt
+      - name: Set up docs environment
+        uses: ./.github/actions/setup-docs
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
@@ -39,11 +43,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Install dependencies
-        run: pip install -r docs/requirements.txt
+      - name: Set up docs environment
+        uses: ./.github/actions/setup-docs
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"

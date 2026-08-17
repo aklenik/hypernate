@@ -78,8 +78,11 @@ When you open a PR that touches code, the **Build & Test** workflow runs three s
 2. `assemble` — compilation.
 3. `test` — the JUnit test suite.
 
+A separate **Build Documentation** workflow validates the documentation site (`mkdocs build
+--strict`) on every PR, so broken links or navigation errors are caught before merge.
+
 All checks must pass before a PR can be merged. See the [CI/CD guide](../guides/cicd.md) for how to
-read results and troubleshoot failures. Documentation-only changes skip this workflow.
+read results and troubleshoot failures. Documentation-only changes skip the Build & Test workflow.
 
 ## Design-Approval Check
 

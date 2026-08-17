@@ -7,6 +7,8 @@ This project uses GitHub Actions for continuous integration and delivery.
 | Workflow         | File                                         | Purpose                                                   |
 | ---------------- | -------------------------------------------- | --------------------------------------------------------- |
 | Build & Test     | `.github/workflows/build.yml`                | Formatting checks, compilation, and tests                 |
+| Build Documentation | `.github/workflows/docs-build.yml`        | Validates the documentation site (`mkdocs build --strict`) |
+| Deploy Documentation | `.github/workflows/docs-deploy.yml`      | Publishes the documentation site via mike                 |
 | Triage Label     | `.github/workflows/triage_label.yml`         | Labels newly opened issues with `needs-triage`            |
 | Design Approval  | `.github/workflows/check_design_approval.yml`| Flags PRs without a linked design/approved issue          |
 | Stale PRs        | `.github/workflows/stale_not_approved.yml`   | Marks and eventually closes stale, non-approved PRs       |
@@ -20,6 +22,29 @@ Documentation-only changes are skipped via path filters.
 
 If a new commit is pushed while a run is already in progress for the same branch, the older run is
 automatically canceled.
+
+## Build Documentation
+
+The Build Documentation workflow runs `mkdocs build --strict` — the same command contributors run
+locally — so a broken internal link or a page missing from `nav` fails the check instead of
+breaking the deployment after merge.
+
+It runs on every pull request, regardless of which files changed. This is deliberate: a required
+status check that is skipped by a path filter never reports its result, which would block the PR
+from merging. Instead, a filter step inside the job detects whether any documentation files
+changed and skips the build steps otherwise, so unrelated PRs pass immediately. On branch pushes
+(before a PR exists), path filters do apply, providing early feedback only when documentation
+files change.
+
+Both this workflow and Deploy Documentation set up their Python environment through the shared
+composite action `.github/actions/setup-docs`.
+
+## Deploy Documentation
+
+The Deploy Documentation workflow publishes the site with [mike](https://github.com/jimporter/mike)
+on pushes to `main` (as the `latest` version) and on `v*.*.*` tags (as a versioned snapshot).
+Deployments are serialized: concurrent runs would race on the `gh-pages` branch, so a new run
+queues behind an in-progress one instead of canceling it.
 
 ## Triage Label
 
