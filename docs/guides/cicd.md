@@ -15,44 +15,34 @@ This project uses GitHub Actions for continuous integration and delivery.
 
 ## Build & Test
 
-The Build & Test workflow runs `spotlessCheck`, `assemble`, and `test` on pushes and pull
-requests that touch code-relevant files.
+The Build & Test workflow runs `spotlessCheck`, `assemble`, and `test` on pushes and pull requests that touch code-relevant files.
 
 Documentation-only changes are skipped via path filters.
 
-If a new commit is pushed while a run is already in progress for the same branch, the older run is
-automatically canceled.
+If a new commit is pushed while a run is already in progress for the same branch, the older run is automatically canceled.
 
 ## Build Documentation
 
 The Build Documentation workflow runs two checks, both identical to what contributors run locally:
 
-1. `npx markdownlint-cli2` — Markdown conventions, most importantly 2-space list nesting
-   (see the [documentation guide](../contributing/documentation.md#markdown-conventions)).
-2. `mkdocs build --strict` — a broken internal link or a page missing from `nav` fails the check
-   instead of breaking the deployment after merge.
+1. `npx markdownlint-cli2` – the [Markdown source conventions](../contributing/documentation.md#markdown-conventions): one sentence per line, en-dashes, and 2-space list nesting.
+2. `mkdocs build --strict` – a broken internal link or a page missing from `nav` fails the check instead of breaking the deployment after merge.
 
-It runs on every pull request, regardless of which files changed. This is deliberate: a required
-status check that is skipped by a path filter never reports its result, which would block the PR
-from merging. Instead, a filter step inside the job detects whether any documentation files
-changed and skips the build steps otherwise, so unrelated PRs pass immediately. On branch pushes
-(before a PR exists), path filters do apply, providing early feedback only when documentation
-files change.
+It runs on every pull request, regardless of which files changed.
+This is deliberate: a required status check that is skipped by a path filter never reports its result, which would block the PR from merging.
+Instead, a filter step inside the job detects which files changed and skips the lint and build steps when they have nothing to do, so unrelated PRs pass immediately.
+On branch pushes (before a PR exists), path filters do apply, providing early feedback only when documentation files change.
 
-Both this workflow and Deploy Documentation set up their Python environment through the shared
-composite action `.github/actions/setup-docs`.
+Both this workflow and Deploy Documentation set up their Python environment through the shared composite action `.github/actions/setup-docs`.
 
 ## Deploy Documentation
 
-The Deploy Documentation workflow publishes the site with [mike](https://github.com/jimporter/mike)
-on pushes to `main` (as the `latest` version) and on `v*.*.*` tags (as a versioned snapshot).
-Deployments are serialized: concurrent runs would race on the `gh-pages` branch, so a new run
-queues behind an in-progress one instead of canceling it.
+The Deploy Documentation workflow publishes the site with [mike](https://github.com/jimporter/mike) on pushes to `main` (as the `latest` version) and on `v*.*.*` tags (as a versioned snapshot).
+Deployments are serialized: concurrent runs would race on the `gh-pages` branch, so a new run queues behind an in-progress one instead of canceling it.
 
 ## Triage Label
 
-When an issue is opened, the Triage Label workflow automatically adds the `needs-triage` label so
-new issues are easy to find and route.
+When an issue is opened, the Triage Label workflow automatically adds the `needs-triage` label so new issues are easy to find and route.
 
 ## Design Approval
 
@@ -64,9 +54,9 @@ In these cases, either a maintainer can force rerun the check or you can make a 
 
 ## Stale PRs
 
-A scheduled daily job marks pull requests carrying the `needs-approved-issue` label as `stale`
-after 14 days of inactivity and closes them after 60 days. PRs labeled `pinned` or `security` are
-exempt. Issues are never affected.
+A scheduled daily job marks pull requests carrying the `needs-approved-issue` label as `stale` after 14 days of inactivity and closes them after 60 days.
+PRs labeled `pinned` or `security` are exempt.
+Issues are never affected.
 
 ## Reading CI Results
 
@@ -78,13 +68,15 @@ exempt. Issues are never affected.
 
 ### Formatting Check Failed
 
-The `spotlessCheck` step enforces Google Java Format. To fix locally:
+The `spotlessCheck` step enforces Google Java Format.
+To fix locally:
 
 ```bash
 ./gradlew spotlessApply
 ```
 
-This reformats source files in place. Commit the changes and push again.
+This reformats source files in place.
+Commit the changes and push again.
 
 ### Test Failure
 

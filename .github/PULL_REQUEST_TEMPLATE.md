@@ -6,7 +6,7 @@
 
 ## Related issue
 
-<!-- Link the issue this PR addresses. EVERY PR — including trivial fixes — must reference a
+<!-- Link the issue this PR addresses. EVERY PR – including trivial fixes – must reference a
      `design/approved` issue; an automated check enforces this. -->
 
 Closes #

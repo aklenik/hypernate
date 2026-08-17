@@ -188,3 +188,4 @@ gradle-app.setting
 lib/bin/
 site/
 .venv/
+node_modules/

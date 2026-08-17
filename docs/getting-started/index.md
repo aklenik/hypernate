@@ -4,12 +4,10 @@
 
 Hypernate is an entity framework for Hyperledger Fabric.
 
-If Fabric allows you to keep your familiar programming language, then Hypernate will allow you to
-keep your familiar programming style.
+If Fabric allows you to keep your familiar programming language, then Hypernate will allow you to keep your familiar programming style.
 
 No more low-level boilerplate code for key-value storage operations and other housekeeping tasks.
-Take advantage of Hypernate's high abstraction level, aspect-oriented approaches, and extensibility
-to keep critical business logic as clean as possible.
+Take advantage of Hypernate's high abstraction level, aspect-oriented approaches, and extensibility to keep critical business logic as clean as possible.
 
 Enhance your chaincode with features like:
 
@@ -33,9 +31,7 @@ More features are on the way:
 
 ## Setup Flow
 
-For complete examples, refer to the
-[hypernate-samples](https://github.com/LF-Decentralized-Trust-labs/hypernate-samples)
-repository.
+For complete examples, refer to the [hypernate-samples](https://github.com/LF-Decentralized-Trust-labs/hypernate-samples) repository.
 
 The typical setup flow is:
 
@@ -44,8 +40,7 @@ The typical setup flow is:
 3. Use `HypernateContract` as the base class for your business `Contract` implementation.
 4. Use the `Registry` class to handle annotated entities in a friendly way.
 
-The easiest integration path is using `HypernateContext` as your transaction `Context`
-implementation so it can wire the registry and middleware setup automatically.
+The easiest integration path is using `HypernateContext` as your transaction `Context` implementation so it can wire the registry and middleware setup automatically.
 
 ## Next Steps
 

@@ -8,6 +8,8 @@ on:
       - 'docs/**'
       - 'mkdocs.yml'
       - '.markdownlint-cli2.jsonc'
+      - 'package.json'
+      - 'package-lock.json'
       - '.github/workflows/docs-build.yml'
       - '.github/actions/setup-docs/**'
   # No path filter for pull requests: a required status check that is filtered
@@ -46,13 +48,23 @@ jobs:
               - 'mkdocs.yml'
               - '.github/workflows/docs-build.yml'
               - '.github/actions/setup-docs/**'
+            markdown:
+              - '**.md'
+              - '.markdownlint-cli2.jsonc'
+              - 'package.json'
+              - 'package-lock.json'
 
       - name: Set up docs environment
         if: steps.changes.outputs.docs == 'true'
         uses: ./.github/actions/setup-docs
 
+      - name: Install lint toolchain
+        if: steps.changes.outputs.markdown == 'true'
+        run: npm ci --ignore-scripts
+
       - name: Lint Markdown
-        run: npx --yes markdownlint-cli2@0.23.2
+        if: steps.changes.outputs.markdown == 'true'
+        run: npx markdownlint-cli2
 
       - name: Build documentation
         if: steps.changes.outputs.docs == 'true'

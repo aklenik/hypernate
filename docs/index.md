@@ -1,12 +1,10 @@
 # Hypernate Documentation
 
-Hypernate is an entity framework for Hyperledger Fabric that brings ORM-like convenience to
-chaincode development.
+Hypernate is an entity framework for Hyperledger Fabric that brings ORM-like convenience to chaincode development.
 
 ## What Hypernate Is
 
-Hypernate provides object-oriented CRUD operations, declarative entity key configuration, and an
-extensible middleware chain for Fabric chaincode development.
+Hypernate provides object-oriented CRUD operations, declarative entity key configuration, and an extensible middleware chain for Fabric chaincode development.
 
 ## Why It Exists
 

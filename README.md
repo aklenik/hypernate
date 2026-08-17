@@ -43,7 +43,8 @@ The gist of using Hypernate features is the following:
 
 #### Declaring your primary key
 
-Why would you mix Fabric-related storage information with your business data? Keep them close - but separated - using the `PrimaryKey` attribute!
+Why would you mix Fabric-related storage information with your business data?
+Keep them close - but separated - using the `PrimaryKey` attribute!
 
 The following code snippet:
 * Uses Hypernate’s `PrimaryKey` annotation to declare a composite key for the entity using an _ordered list_ of `AttributeInfo` parts.
@@ -91,7 +92,8 @@ Let’s see what happens when we `toString` a few ID-like numbers:
 The issue is evident: the keys do not retain their business semantic (their order) and we lose nice Fabric features like range or partial queries.
 Well, they are still there, but might produce **semantically incorrect** results if the business logic depends on the enumeration order of keys!
 
-How would you solve this problem? By a smarter `toString` implementation, of course!
+How would you solve this problem?
+By a smarter `toString` implementation, of course!
 The new implementation should produce the following, order-friendly strings (or something like that):
 * `"009"`, `"010"`, `"011"`, …
 
@@ -100,7 +102,7 @@ Generalizing this idea, Hypernate gives you the opportunity to declare attribute
 The following code snippet:
 * Uses Hypernate’s `PrimaryKey` annotation to declare a composite key for the entity using an _ordered list_ of `AttributeInfo` parts.
 * Declares the class `IntegerZeroPadder` as the mapper for the attribute value to retain the correct ordering of resulting key part strings.
-* (Optional) Uses `lombok`’s `FieldNameConstants` annotation, so you can reference field names in a type-safe way! 
+* (Optional) Uses `lombok`’s `FieldNameConstants` annotation, so you can reference field names in a type-safe way!
 
 ```java
 @FieldNameConstants
@@ -132,7 +134,7 @@ The following code snippet:
   * Uses Hypernate’s `AttributeInfo` annotation to declare the first composite key part as the `owner` attribute value, because we would like to run partial queries based on this attribute value of each asset.
   * Uses Hypernate’s `AttributeInfo` annotation to declare the second composite key part as the `assetID` attribute value.
     * Declares the class `IntegerZeroPadder` as the mapper for the attribute value to retain the correct ordering of resulting key part strings.
-* (Optional) Uses `lombok`’s `FieldNameConstants` annotation, so you can reference field names in a type-safe way! 
+* (Optional) Uses `lombok`’s `FieldNameConstants` annotation, so you can reference field names in a type-safe way!
 
 ```java
 @FieldNameConstants
@@ -186,8 +188,7 @@ ctx.getRegistry().mustDelete(toDelete);
 ### Middleware
 
 There are some application tasks that are not closely related to the business logic, but must be performed nevertheless, and these are typically repeated from application to application.
-The systems engineering world extracted these repeating tasks and packaged them into self-contained _middleware._
-Middleware processors are fully functional services that are usually application-independent, thus reusable across applications. 
+The systems engineering world extracted these repeating tasks and packaged them into self-contained _middleware._ Middleware processors are fully functional services that are usually application-independent, thus reusable across applications.
 
 Hypernate also identified some repeating, application-independent tasks around the Fabric `ChaincodeStub` that might be handy across different projects.
 What’s more, you can chain more middleware processors together, similarly to web server middleware!
@@ -195,10 +196,10 @@ Cherry-pick your middleware components to easily shape the feature set of your c
 
 Currently, the following middleware processors are available (with more on the way!):
 * `LoggingStubMiddleware`: wraps popular ledger access operations with logging, so you always know what’s happening between your business logic and ledger.
-* `WriteBackCachedStubMiddleware`: implements caching of raw ledger entries to lower the traffic between the chaincode and the peer, and also to support the _read-your-own-write_ data access semantic. 
+* `WriteBackCachedStubMiddleware`: implements caching of raw ledger entries to lower the traffic between the chaincode and the peer, and also to support the _read-your-own-write_ data access semantic.
 
 The following code snippet shows:
-* How to use the `MiddlewareInfo` annotation to construct an _ordered list_ (i.e., a chain) of middleware processors. 
+* How to use the `MiddlewareInfo` annotation to construct an _ordered list_ (i.e., a chain) of middleware processors.
 * How to use the `HypernateContract` base class to automatically take care of processing the annotations and building the corresponding chain.
 
 ```java
@@ -214,19 +215,17 @@ So it is possible that the original stub won’t even get the call, it is served
 
 > [!IMPORTANT] 
 > Hypernate context and middleware instances are specific to your individual TX executions/endorsements!
-> Hypernate does not introduce dependencies between TXs, following the traditional (and important!) Fabric chaincode development practice.
+> Hypernate does not introduce dependencies between TXs, following the traditional (and important!)
+> Fabric chaincode development practice.
 
 
 
 ## Contributing
 
-Contributions are welcome! See the [Contributing guide](CONTRIBUTING.md) — or the
-[documentation site](https://lf-decentralized-trust-labs.github.io/hypernate/) — for how to report
-issues, set up your environment, and submit pull requests.
+Contributions are welcome!
+See the [Contributing guide](CONTRIBUTING.md) – or the [documentation site](https://lf-decentralized-trust-labs.github.io/hypernate/) – for how to report issues, set up your environment, and submit pull requests.
 
-In short: fork the repository, create a branch with a meaningful name, make your changes using
-[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary), sign off your
-commits (`git commit -s`), and open a pull request.
+In short: fork the repository, create a branch with a meaningful name, make your changes using [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary), sign off your commits (`git commit -s`), and open a pull request.
 
 
 
@@ -236,7 +235,8 @@ Please use the following information when you use or reference this project (or 
 
 Text form:
 
-Damaris Jepkurui Kangogo, Bertalan Zoltán Péter, Attila Klenik, Imre Kocsis. _Practical runtime verification of cross-organizational smart contracts_, 11 July 2024, PREPRINT (Version 1) available at Research Square [https://doi.org/10.21203/rs.3.rs-4606405/v1]
+Damaris Jepkurui Kangogo, Bertalan Zoltán Péter, Attila Klenik, Imre Kocsis.
+_Practical runtime verification of cross-organizational smart contracts_, 11 July 2024, PREPRINT (Version 1) available at Research Square [https://doi.org/10.21203/rs.3.rs-4606405/v1]
 
 BibTeX:
 ```

@@ -2,8 +2,7 @@
 
 ## Core Concepts
 
-Hypernate builds on Hyperledger Fabric by adding a higher-level programming model focused on
-entities, typed operations, and reusable middleware.
+Hypernate builds on Hyperledger Fabric by adding a higher-level programming model focused on entities, typed operations, and reusable middleware.
 
 ## Declarative Entity Keys
 
@@ -29,10 +28,10 @@ public record Asset(
 Fabric keys are strings, so key-part mapping matters for sorting and range scans.
 
 If numeric IDs are mapped with plain `toString`, lexical ordering can become semantically wrong.
-For example, `9`, `10`, `11` become `"9"`, `"10"`, `"11"`, and lexical ordering puts `"10"`
-before `"9"`.
+For example, `9`, `10`, `11` become `"9"`, `"10"`, `"11"`, and lexical ordering puts `"10"` before `"9"`.
 
-Hypernate supports mapper classes to preserve ordering semantics. Available mappers include:
+Hypernate supports mapper classes to preserve ordering semantics.
+Available mappers include:
 
 - `IntegerZeroPadder`
 - `IntegerFlipperAndZeroPadder`
@@ -98,7 +97,6 @@ You can chain middleware with `@MiddlewareInfo`:
 public class MyBusinessContract implements HypernateContract
 ```
 
-This allows call interception for logging, caching, and other cross-cutting behavior while
-keeping business code focused.
+This allows call interception for logging, caching, and other cross-cutting behavior while keeping business code focused.
 
 > Hypernate context and middleware instances are specific to individual transaction executions.
