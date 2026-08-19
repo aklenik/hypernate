@@ -1,0 +1,29 @@
+name: Fast-Forward Merge
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  fast-forward:
+    name: Fast-forward main to the PR head
+    # React only to `/fast-forward` comments made on pull requests by users
+    # with write access to the repository.
+    if: >-
+      github.event.issue.pull_request
+      && contains(github.event.comment.body, '/fast-forward')
+      && contains(fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.comment.author_association)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fast forward
+        # sequoia-pgp/fast-forward v1.0.0, pinned by commit SHA because this
+        # workflow holds contents: write
+        uses: sequoia-pgp/fast-forward@ea7628bedcb0b0b96e94383ada458d812fca4979
+        with:
+          merge: true
+          comment: always
